@@ -1,0 +1,9 @@
+DirectoryIndex index.php
+
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# HTTP queries requesting non-existent files or folders get passed on as a GET
+# parameter (page) to index.php so it can handle routing
+RewriteRule ^([\w\/\-]+)/?$ index.php?page=$1 [QSA]
